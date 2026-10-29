@@ -55,9 +55,9 @@ function App() {
       : "";
 
     const [productData, dashboardData] = await Promise.all([
-      apiRequest(`/products/${query}`),
-      apiRequest("/dashboard/"),
-    ]);
+  apiRequest(`/api/products/${query}`),
+  apiRequest("/api/dashboard/"),
+]);
 
     setProducts(productData);
     setDashboard(dashboardData);
@@ -174,12 +174,14 @@ function App() {
 
     try {
       await apiRequest(
-        editingId ? `/products/${editingId}/` : "/products/",
-        {
-          method: editingId ? "PATCH" : "POST",
-          body: JSON.stringify(payload),
-        }
-      );
+  editingId
+    ? `/api/products/${editingId}/`
+    : "/api/products/",
+  {
+    method: editingId ? "PATCH" : "POST",
+    body: JSON.stringify(payload),
+  }
+);
 
       setNotice(editingId ? "Product updated." : "Product added.");
       setProductForm(emptyProduct);
@@ -213,9 +215,9 @@ function App() {
     setNotice("");
 
     try {
-      await apiRequest(`/products/${product.id}/`, {
+      await apiRequest(`/api/products/${product.id}/`, {
         method: "DELETE",
-      });
+});
       setNotice("Product deleted.");
       await loadData();
     } catch (err) {
