@@ -105,8 +105,9 @@ function App() {
 
     try {
       const path =
-        authMode === "register" ? "/auth/register/" : "/auth/login/";
-
+      authMode === "register" 
+      ? "/api/auth/register/"
+      : "/api/auth/login/";
       const payload =
         authMode === "register"
           ? authForm
