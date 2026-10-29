@@ -1,4 +1,9 @@
-const API_URL = "http://127.0.0.1:8000/api";
+
+const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL ||
+  "https://stockflow-inventory-management-tx2y.onrender.com";
+
+export default API_BASE_URL;
 
 export async function apiRequest(path, options = {}) {
   const token = localStorage.getItem("stockflow_access");
@@ -9,7 +14,7 @@ export async function apiRequest(path, options = {}) {
     ...options.headers,
   };
 
-  const response = await fetch(`${API_URL}${path}`, {
+  const response = await fetch(`${API_BASE_URL}${path}`, {
     ...options,
     headers,
   });
