@@ -1,7 +1,7 @@
 
 const API_BASE_URL =
   import.meta.env.VITE_API_BASE_URL ||
-  "https://stockflow-inventory-management-tx2y.onrender.com";
+  "https://stockflow-inventory-management-tx2y.onrender.com/api";
 
 export default API_BASE_URL;
 
